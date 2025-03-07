@@ -15,7 +15,7 @@ build:
   # Build uses pep517 with a custom backend
   # console_scripts entrypoints aren't used, so this can't be noarch
   script:
-    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
+    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv
     - mkdir -p $PREFIX/share/bash-completions/completions && echo complete -C aws_completer aws >$PREFIX/share/bash-completions/completions/aws  # [unix]
 
 requirements:
@@ -72,6 +72,8 @@ requirements:
     - zipp <3.21.0
 
 test:
+  requires:
+    - pip
   imports:
     # find $CONDA_PREFIX/lib/python3.9/site-packages/awscli/ -type f -name __init__.py | sed -re 's%.+(awscli.*)/__init__.py%- \1%' -re s'%/%.%g' | sort
     # Last updated version 2.11.15
@@ -126,11 +128,13 @@ test:
     # Check autocomplete index exists:
     - python -c "import awscli, os; assert os.stat(os.path.join(os.path.dirname(awscli.__file__), 'data', 'ac.index')).st_size > 1e6"
     - COMP_LINE="aws ec2 describe-inst" aws_completer     # [unix]
+    - pip check
 
 about:
   home: https://aws.amazon.com/cli/
   license_file: LICENSE.txt
   license: Apache-2.0
+  license_family: Apache
   summary: Universal Command Line Environment for AWS.
   dev_url: https://github.com/aws/aws-cli
   doc_url: https://aws.amazon.com/cli/
