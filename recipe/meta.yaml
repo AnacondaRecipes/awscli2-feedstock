@@ -122,6 +122,7 @@ about:
   license: Apache-2.0
   license_family: Apache
   summary: Universal Command Line Environment for AWS.
+  description: This package provides a unified command line interface to Amazon Web Services.
   dev_url: https://github.com/aws/aws-cli
   doc_url: https://aws.amazon.com/cli/
 
