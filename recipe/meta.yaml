@@ -15,28 +15,12 @@ build:
   # Build uses pep517 with a custom backend
   # console_scripts entrypoints aren't used, so this can't be noarch
   script:
-    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
+    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv
     - mkdir -p $PREFIX/share/bash-completions/completions && echo complete -C aws_completer aws >$PREFIX/share/bash-completions/completions/aws  # [unix]
 
 requirements:
   build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    # The autocomplete index step is run on the build host
-    # keep these in sync with host and run copies
-    - colorama >=0.2.5,<0.4.7                # [build_platform != target_platform]
-    - docutils >=0.10,<0.20                  # [build_platform != target_platform]
-    - cryptography >=40.0.0,<43.0.2          # [build_platform != target_platform]
-    - ruamel.yaml >=0.15.0,<=0.17.21         # [build_platform != target_platform]
-    - ruamel.yaml.clib >=0.2.0,<=0.2.8       # [build_platform != target_platform]
-    - prompt-toolkit >=3.0.24,<3.0.39        # [build_platform != target_platform]
-    - distro >=1.5.0,<1.9.0                  # [build_platform != target_platform]
-    - awscrt ==0.23.8                        # [build_platform != target_platform]
-    - python-dateutil >=2.1,<=2.9.0          # [build_platform != target_platform]
-    - jmespath >=0.7.1,<1.1.0                # [build_platform != target_platform]
-    - urllib3 >=1.25.4,<1.27                 # [build_platform != target_platform]
-    - zipp <3.21.0                           # [build_platform != target_platform]
-
+    - python
   host:
     - python
     - flit-core ==3.9.0
@@ -74,6 +58,8 @@ requirements:
     - zipp <3.21.0
 
 test:
+  requires:
+    - pip
   imports:
     # find $CONDA_PREFIX/lib/python3.9/site-packages/awscli/ -type f -name __init__.py | sed -re 's%.+(awscli.*)/__init__.py%- \1%' -re s'%/%.%g' | sort
     # Last updated version 2.11.15
@@ -128,12 +114,15 @@ test:
     # Check autocomplete index exists:
     - python -c "import awscli, os; assert os.stat(os.path.join(os.path.dirname(awscli.__file__), 'data', 'ac.index')).st_size > 1e6"
     - COMP_LINE="aws ec2 describe-inst" aws_completer     # [unix]
+    - pip check
 
 about:
   home: https://aws.amazon.com/cli/
   license_file: LICENSE.txt
   license: Apache-2.0
+  license_family: Apache
   summary: Universal Command Line Environment for AWS.
+  description: This package provides a unified command line interface to Amazon Web Services.
   dev_url: https://github.com/aws/aws-cli
   doc_url: https://aws.amazon.com/cli/
 
