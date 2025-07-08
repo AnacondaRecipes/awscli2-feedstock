@@ -1,0 +1,25 @@
+From 247132d56a28ec2420838499223fa9dc10b66df9 Mon Sep 17 00:00:00 2001
+From: Patryk Kups <pkups@anaconda.com>
+Date: Tue, 8 Jul 2025 10:16:45 +0200
+Subject: [PATCH] fix awscrt dependency version
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index f122f1d..e4aa3ce 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -40,7 +40,7 @@ dependencies = [
+     "ruamel.yaml.clib>=0.2.0,<=0.2.12",
+     "prompt-toolkit>=3.0.24,<3.0.39",
+     "distro>=1.5.0,<1.9.0",
+-    "awscrt==0.26.1",
++    "awscrt>=0.26.1",
+     "python-dateutil>=2.1,<=2.9.0",
+     "jmespath>=0.7.1,<1.1.0",
+     "urllib3>=1.25.4,<1.27",
+-- 
+2.39.5 (Apple Git-154)
+
