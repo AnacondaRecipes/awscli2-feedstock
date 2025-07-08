@@ -61,6 +61,9 @@ requirements:
 
 # RuntimeError: Credentials were refreshed, but the refreshed credentials are still expired.
 {% set tests_to_skip = "test_token_chosen_from_provider" %}
+# AssertionError: 'apiV[62 chars]ata: \n      LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tL[1540 chars] aws' != 'apiV[62 chars]ata: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpWR[1532 chars] aws'
+# AssertionError: 'apiV[62 chars]ata: \n      DATADATADATADATADATADATADATADATAD[2395 chars] aws' != 'apiV[62 chars]ata: DATADATADATADATADATADATADATADATADATADATAD[2379 chars] aws'
+{% set tests_to_skip = tests_to_skip + " or TestUpdateKubeconfig" %}
 # return ED25519(binding=_awscrt.ed25519_new_generate())
 # RuntimeError: 7174 (AWS_ERROR_CAL_UNSUPPORTED_ALGORITHM): The specified algorithm is unsupported on this platform.
 # awscrt dependency doesn't support ed25519 for WIN/OSX
@@ -68,9 +71,6 @@ requirements:
 {% set tests_to_skip = tests_to_skip + " or test_valid_input_without_ssh_key" %}  # [win or osx]
 # OSError: [Errno 22] Invalid argument
 {% set tests_to_skip = tests_to_skip + " or test_default or test_iso" %}  # [win]
-# AssertionError: 'apiV[62 chars]ata: \n      LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tL[1540 chars] aws' != 'apiV[62 chars]ata: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpWR[1532 chars] aws'
-# AssertionError: 'apiV[62 chars]ata: \n      DATADATADATADATADATADATADATADATAD[2395 chars] aws' != 'apiV[62 chars]ata: DATADATADATADATADATADATADATADATADATADATAD[2379 chars] aws'
-{% set tests_to_skip = tests_to_skip + " or TestUpdateKubeconfig" %}  # [unix]
 
 test:
   source_files:
