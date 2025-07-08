@@ -86,16 +86,56 @@ test:
     - awscli.argprocess
     - awscli.arguments
     - awscli.autocomplete
+    - awscli.autocomplete.local
+    - awscli.autocomplete.serverside
+    - awscli.autocomplete.serverside.custom_completers
+    - awscli.autocomplete.serverside.custom_completers.ddb
+    - awscli.autocomplete.serverside.custom_completers.logs
     - awscli.autoprompt
     - awscli.bcdoc
+    - awscli.botocore
     - awscli.botocore.awsrequest
     - awscli.botocore.session
+    - awscli.botocore.crt
+    - awscli.botocore.docs
+    - awscli.botocore.docs.bcdoc
+    - awscli.botocore.retries
+    - awscli.botocore.vendored
+    - awscli.botocore.vendored.requests
+    - awscli.botocore.vendored.requests.packages
+    - awscli.botocore.vendored.requests.packages.urllib3
     - awscli.clidocs
     - awscli.clidriver
     - awscli.commands
     - awscli.compat
     - awscli.constants
     - awscli.customizations
+    - awscli.customizations.cloudformation
+    - awscli.customizations.cloudtrail
+    - awscli.customizations.codeartifact
+    - awscli.customizations.codedeploy
+    - awscli.customizations.configservice
+    - awscli.customizations.configure
+    - awscli.customizations.datapipeline
+    - awscli.customizations.dlm
+    - awscli.customizations.dynamodb
+    - awscli.customizations.ec2
+    - awscli.customizations.ec2instanceconnect
+    - awscli.customizations.ecs
+    - awscli.customizations.eks
+    - awscli.customizations.emr
+    - awscli.customizations.emrcontainers
+    - awscli.customizations.gamelift
+    - awscli.customizations.history
+    - awscli.customizations.lightsail
+    - awscli.customizations.logs
+    - awscli.customizations.s3
+    - awscli.customizations.s3.syncstrategy
+    - awscli.customizations.servicecatalog
+    - awscli.customizations.sso
+    - awscli.customizations.wizard
+    - awscli.customizations.wizard.ui
+    - awscli.s3transfer
     - awscli.errorhandler
     - awscli.formatter
     - awscli.help
