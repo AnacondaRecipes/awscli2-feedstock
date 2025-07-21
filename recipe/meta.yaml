@@ -16,7 +16,7 @@ build:
   script:
     - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv
     - mkdir -p $PREFIX/share/bash-completions/completions && echo complete -C aws_completer aws >$PREFIX/share/bash-completions/completions/aws  # [unix]
-  # Drop Py3.13 due to missing dependency versions of ruamel.yaml/urllib3 for Py3.13. Remove it when upstream
+  # Drop Py3.13 due to missing dependency versions of ruamel.yaml/urllib3 for Py3.13. Remove it when upstream bump dependency versions
   skip: True  # [py<39 or py>312]
 
 requirements:
