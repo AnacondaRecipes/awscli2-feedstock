@@ -1,5 +1,5 @@
 {% set name = "awscli" %}
-{% set version = "2.27.49" %}
+{% set version = "2.27.55" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/aws/aws-cli/archive/{{ version }}.tar.gz
-  sha256: a8043443d3d01b7857b62f67799de0d5ed4ae0bb413d51229f33a4c32126e686
+  sha256: efd5449c6d73752e62db36bbe24a72abd8bfda5c13d81be3bc35e59c429abc52
   patches:
     - patches/0001-fix-dependencies-version.patch
 
@@ -16,7 +16,8 @@ build:
   script:
     - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv
     - mkdir -p $PREFIX/share/bash-completions/completions && echo complete -C aws_completer aws >$PREFIX/share/bash-completions/completions/aws  # [unix]
-  skip: True  # [py<39]
+  # Drop Py3.13 due to missing dependency versions of ruamel.yaml/urllib3 for Py3.13. Remove it when upstream
+  skip: True  # [py<39 or py>312]
 
 requirements:
   build:
@@ -32,32 +33,26 @@ requirements:
     # duplicate everything :-(
     - colorama >=0.2.5,<0.4.7
     - docutils >=0.10,<0.20
-    - ruamel.yaml >=0.15.0,<=0.17.21  # [py<=312]
-    - ruamel.yaml 0.18.6  # [py>312]
+    - ruamel.yaml >=0.15.0,<=0.17.21
     - ruamel.yaml.clib >=0.2.0,<=0.2.12
-    - prompt-toolkit >=3.0.24,<3.0.39  # [py<=312]
-    - prompt-toolkit 3.0.43  # [py>312]
+    - prompt-toolkit >=3.0.24,<3.0.39
     - distro >=1.5.0,<1.9.0
     - awscrt >=0.26.1
     - python-dateutil >=2.1,<=2.9.0
     - jmespath >=0.7.1,<1.1.0
-    - urllib3 >=1.25.4,<1.27  # [py<=312]
-    - urllib3 2.2.3  # [py>312]
+    - urllib3 >=1.25.4,<1.27
   run:
     - python
     - colorama >=0.2.5,<0.4.7
     - docutils >=0.10,<0.20
-    - ruamel.yaml >=0.15.0,<=0.17.21  # [py<=312]
-    - ruamel.yaml 0.18.6  # [py>312]
+    - ruamel.yaml >=0.15.0,<=0.17.21
     - ruamel.yaml.clib >=0.2.0,<=0.2.12
-    - prompt-toolkit >=3.0.24,<3.0.39  # [py<=312]
-    - prompt-toolkit 3.0.43  # [py>312]
+    - prompt-toolkit >=3.0.24,<3.0.39
     - distro >=1.5.0,<1.9.0
     - awscrt >=0.26.1
     - python-dateutil >=2.1,<=2.9.0
     - jmespath >=0.7.1,<1.1.0
-    - urllib3 >=1.25.4,<1.27  # [py<=312]
-    - urllib3 2.2.3  # [py>312]
+    - urllib3 >=1.25.4,<1.27
 
 test:
   source_files:
@@ -160,3 +155,6 @@ extra:
   recipe-maintainers:
     - xhochy
     - tkelman
+  skip-lints:
+    # Use newer version of Win patch
+    - patch_must_be_in_build

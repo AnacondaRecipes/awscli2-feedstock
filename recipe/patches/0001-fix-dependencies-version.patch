@@ -1,75 +1,25 @@
-From 61f9aeefd9d039c22a393633134fff7da127a8cf Mon Sep 17 00:00:00 2001
+From 4e6513ba152698f650e9df7f341918edc094cb55 Mon Sep 17 00:00:00 2001
 From: Patryk Kups <pkups@anaconda.com>
-Date: Tue, 8 Jul 2025 16:19:22 +0200
-Subject: [PATCH] patch
+Date: Mon, 21 Jul 2025 10:47:30 +0200
+Subject: [PATCH] fix-ver
 
 ---
- 0001-fix-awscrt-dependency-version.patch | 25 ++++++++++++++++++++++++
- pyproject.toml                           | 11 +++++++----
- 2 files changed, 32 insertions(+), 4 deletions(-)
- create mode 100644 0001-fix-awscrt-dependency-version.patch
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/0001-fix-awscrt-dependency-version.patch b/0001-fix-awscrt-dependency-version.patch
-new file mode 100644
-index 0000000..e8635da
---- /dev/null
-+++ b/0001-fix-awscrt-dependency-version.patch
-@@ -0,0 +1,25 @@
-+From 247132d56a28ec2420838499223fa9dc10b66df9 Mon Sep 17 00:00:00 2001
-+From: Patryk Kups <pkups@anaconda.com>
-+Date: Tue, 8 Jul 2025 10:16:45 +0200
-+Subject: [PATCH] fix awscrt dependency version
-+
-+---
-+ pyproject.toml | 2 +-
-+ 1 file changed, 1 insertion(+), 1 deletion(-)
-+
-+diff --git a/pyproject.toml b/pyproject.toml
-+index f122f1d..e4aa3ce 100644
-+--- a/pyproject.toml
-++++ b/pyproject.toml
-+@@ -40,7 +40,7 @@ dependencies = [
-+     "ruamel.yaml.clib>=0.2.0,<=0.2.12",
-+     "prompt-toolkit>=3.0.24,<3.0.39",
-+     "distro>=1.5.0,<1.9.0",
-+-    "awscrt==0.26.1",
-++    "awscrt>=0.26.1",
-+     "python-dateutil>=2.1,<=2.9.0",
-+     "jmespath>=0.7.1,<1.1.0",
-+     "urllib3>=1.25.4,<1.27",
-+-- 
-+2.39.5 (Apple Git-154)
-+
 diff --git a/pyproject.toml b/pyproject.toml
-index f122f1d..e7b2fde 100644
+index f122f1d..e4aa3ce 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -32,18 +32,21 @@ classifiers = [
- dependencies = [
-     "colorama>=0.2.5,<0.4.7",
-     "docutils>=0.10,<0.20",
--    "ruamel.yaml>=0.15.0,<=0.17.21",
-+    "ruamel.yaml>=0.15.0,<=0.17.21; python_version <= '3.12'",
-+    "ruamel.yaml==0.18.6; python_version > '3.12'",
-     # ruamel.yaml only requires ruamel.yaml.clib for Python versions
-     # less than or equal to Python 3.10. In order to ensure we have
-     # a consistent dependency closure across all Python versions,
-     # we explicitly include ruamel.yaml.clib as a dependency.
+@@ -40,7 +40,7 @@ dependencies = [
      "ruamel.yaml.clib>=0.2.0,<=0.2.12",
--    "prompt-toolkit>=3.0.24,<3.0.39",
-+    "prompt-toolkit>=3.0.24,<3.0.39; python_version <= '3.12'",
-+    "prompt-toolkit==3.0.43; python_version > '3.12'",
+     "prompt-toolkit>=3.0.24,<3.0.39",
      "distro>=1.5.0,<1.9.0",
 -    "awscrt==0.26.1",
 +    "awscrt>=0.26.1",
      "python-dateutil>=2.1,<=2.9.0",
      "jmespath>=0.7.1,<1.1.0",
--    "urllib3>=1.25.4,<1.27",
-+    "urllib3>=1.25.4,<1.27; python_version <= '3.12'",
-+    "urllib3==2.2.3; python_version > '3.12'"
- ]
- dynamic = ["version"]
- 
+     "urllib3>=1.25.4,<1.27",
 -- 
 2.39.5 (Apple Git-154)
 
