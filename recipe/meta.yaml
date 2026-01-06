@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/aws/aws-cli/archive/{{ version }}.tar.gz
-  sha256: efd5449c6d73752e62db36bbe24a72abd8bfda5c13d81be3bc35e59c429abc52
+  sha256: 85ecd5baf4d5cdf4d9e436dd76e023d0126cdcd0e5cbf97a5cd15b33f8829b05
   patches:
     - patches/0001-fix-dependencies-version.patch
 
