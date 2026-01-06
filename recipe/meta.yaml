@@ -1,5 +1,5 @@
 {% set name = "awscli" %}
-{% set version = "2.27.55" %}
+{% set version = "2.32.28" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/aws/aws-cli/archive/{{ version }}.tar.gz
-  sha256: efd5449c6d73752e62db36bbe24a72abd8bfda5c13d81be3bc35e59c429abc52
+  sha256: 85ecd5baf4d5cdf4d9e436dd76e023d0126cdcd0e5cbf97a5cd15b33f8829b05
   patches:
     - patches/0001-fix-dependencies-version.patch
 
@@ -20,9 +20,6 @@ build:
   skip: True  # [py<39 or py>312]
 
 requirements:
-  build:
-    - patch  # [not win]
-    - msys2-patch  # [win]
   host:
     - python
     - pip
@@ -35,9 +32,9 @@ requirements:
     - docutils >=0.10,<0.20
     - ruamel.yaml >=0.15.0,<=0.17.21
     - ruamel.yaml.clib >=0.2.0,<=0.2.12
-    - prompt-toolkit >=3.0.24,<3.0.39
+    - prompt-toolkit >=3.0.24,<3.0.52
     - distro >=1.5.0,<1.9.0
-    - awscrt >=0.26.1
+    - awscrt >=0.29.1
     - python-dateutil >=2.1,<=2.9.0
     - jmespath >=0.7.1,<1.1.0
     - urllib3 >=1.25.4,<1.27
@@ -47,9 +44,9 @@ requirements:
     - docutils >=0.10,<0.20
     - ruamel.yaml >=0.15.0,<=0.17.21
     - ruamel.yaml.clib >=0.2.0,<=0.2.12
-    - prompt-toolkit >=3.0.24,<3.0.39
+    - prompt-toolkit >=3.0.24,<3.0.52
     - distro >=1.5.0,<1.9.0
-    - awscrt >=0.26.1
+    - awscrt >=0.29.1
     - python-dateutil >=2.1,<=2.9.0
     - jmespath >=0.7.1,<1.1.0
     - urllib3 >=1.25.4,<1.27
