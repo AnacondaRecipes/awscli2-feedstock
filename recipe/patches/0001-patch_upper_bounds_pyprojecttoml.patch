@@ -1,0 +1,73 @@
+From f16e69dd2777caf82604d814c81f908ea84c160c Mon Sep 17 00:00:00 2001
+From: maciej traczyk <mtraczyk@anaconda.com>
+Date: Mon, 28 Sep 2026 15:35:38 +0200
+Subject: [PATCH] patch_upper_bounds_pyprojecttoml
+
+---
+ 0001-patch_flit-core_upper_bound.patch | 24 ++++++++++++++++++++++++
+ pyproject.toml                         |  6 +++---
+ 2 files changed, 27 insertions(+), 3 deletions(-)
+ create mode 100644 0001-patch_flit-core_upper_bound.patch
+
+diff --git a/0001-patch_flit-core_upper_bound.patch b/0001-patch_flit-core_upper_bound.patch
+new file mode 100644
+index 000000000..0c0ece654
+--- /dev/null
++++ b/0001-patch_flit-core_upper_bound.patch
+@@ -0,0 +1,24 @@
++From 86e4e01681de7c1c90457d74ec887955b907b5f1 Mon Sep 17 00:00:00 2001
++From: maciej traczyk <mtraczyk@anaconda.com>
++Date: Mon, 28 Sep 2026 15:19:58 +0200
++Subject: [PATCH] patch_flit-core_upper_bound
++
++---
++ pyproject.toml | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/pyproject.toml b/pyproject.toml
++index 76f3519b8..3dfad6745 100644
++--- a/pyproject.toml
+++++ b/pyproject.toml
++@@ -1,6 +1,6 @@
++ [build-system]
++ requires = [
++-"flit_core>=3.7.1,<3.12.1",
+++"flit_core>=3.7.1,<4.0.2",
++ ]
++ build-backend = "pep517"
++ backend-path = ["backends"]
++-- 
++2.51.0
++
+diff --git a/pyproject.toml b/pyproject.toml
+index 76f3519b8..d01726477 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,6 +1,6 @@
+ [build-system]
+ requires = [
+-"flit_core>=3.7.1,<3.12.1",
++"flit_core>=3.7.1,<4.0.2",
+ ]
+ build-backend = "pep517"
+ backend-path = ["backends"]
+@@ -32,14 +32,14 @@ classifiers = [
+ ]
+ dependencies = [
+     "colorama>=0.2.5,<0.4.7",
+-    "docutils>=0.10,<0.20",
++    "docutils>=0.10,<0.24",
+     "ruamel_yaml>=0.15.0,<=0.19.1",
+     # ruamel_yaml only requires ruamel_yaml_clib for Python versions
+     # less than or equal to Python 3.10. In order to ensure we have
+     # a consistent dependency closure across all Python versions,
+     # we explicitly include ruamel_yaml_clib as a dependency.
+     "ruamel_yaml_clib>=0.2.0,<=0.2.15",
+-    "prompt-toolkit>=3.0.24,<3.0.52",
++    "prompt-toolkit>=3.0.24,<3.0.54",
+     "distro>=1.5.0,<1.9.0",
+     "awscrt==0.36.2",
+     "python-dateutil>=2.1,<=2.9.0",
+-- 
+2.51.0
+
