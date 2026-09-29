@@ -14,7 +14,7 @@ build:
   script:
     - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv
     - mkdir -p $PREFIX/share/bash-completions/completions && echo complete -C aws_completer aws >$PREFIX/share/bash-completions/completions/aws  # [unix]
-  # Drop Py3.14 due to missing dependency versions of ruamel.yaml/urllib3 for Py3.13. Remove it when upstream bump dependency versions
+  # Drop Py3.14 due to missing dependency versions of ruamel.yaml/urllib3 for Py3.14. Remove it when upstream bump dependency versions
   skip: true  # [py<39 or py>313]
 
 requirements:
@@ -35,7 +35,7 @@ requirements:
     - awscrt >=0.36.2
     - python-dateutil >=2.1,<=2.9.0
     - jmespath >=0.7.1,<1.1.0
-    - urllib3 >=1.25.4,<2.6.3
+    - urllib3 >=1.25.4,<2.8.1
     - wcwidth <0.3.0
   run:
     - python
