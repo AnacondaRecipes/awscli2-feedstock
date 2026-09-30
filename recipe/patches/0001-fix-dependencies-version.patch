@@ -1,7 +1,7 @@
-From 39a41faa37833cfb0aaf7878682c0c4d21255563 Mon Sep 17 00:00:00 2001
-From: Andrii Vetroumov <avetroumov@anaconda.com>
-Date: Tue, 29 Sep 2026 11:34:01 +0300
-Subject: [PATCH] fix dependencies version
+From 4e6513ba152698f650e9df7f341918edc094cb55 Mon Sep 17 00:00:00 2001
+From: Patryk Kups <pkups@anaconda.com>
+Date: Mon, 21 Jul 2025 10:47:30 +0200
+Subject: [PATCH] fix-ver
 
 ---
  pyproject.toml | 2 +-
