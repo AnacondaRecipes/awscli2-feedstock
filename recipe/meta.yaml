@@ -1,5 +1,5 @@
 {% set name = "awscli" %}
-{% set version = "2.36.25" %}
+{% set version = "2.37.5" %}
 
 package:
   name: {{ name }}
@@ -7,15 +7,14 @@ package:
 
 source:
   url: https://github.com/aws/aws-cli/archive/{{ version }}.tar.gz
-  sha256: d631d8f046e9f85abdcec3b0b9aecd939a1918f830ff12e26ea732543dc75bc8
+  sha256: 832bbb3441a0b4e3cc36d00eb12ae842a77865367e9b06732f118be5bcf93955
 
 build:
   number: 0
   script:
     - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv
     - mkdir -p $PREFIX/share/bash-completions/completions && echo complete -C aws_completer aws >$PREFIX/share/bash-completions/completions/aws  # [unix]
-  # Drop Py3.14 due to missing dependency versions of ruamel.yaml/urllib3 for Py3.14. Remove it when upstream bump dependency versions
-  skip: true  # [py<39 or py>313]
+  skip: true  # [py<39]
 
 requirements:
   host:
@@ -28,27 +27,27 @@ requirements:
     # duplicate everything :-(
     - colorama >=0.2.5,<0.4.7
     - docutils >=0.10,<0.20
-    - ruamel.yaml >=0.15.0,<=0.19.11
+    - ruamel.yaml >=0.15.0,<=0.19.1
     - ruamel.yaml.clib >=0.2.0,<=0.2.15
     - prompt-toolkit >=3.0.24,<3.0.52
     - distro >=1.5.0,<1.9.0
-    - awscrt >=0.36.2
+    - awscrt ==0.37.0
     - python-dateutil >=2.1,<=2.9.0
     - jmespath >=0.7.1,<1.1.0
-    - urllib3 >=1.25.4,<2.6.3
+    - urllib3 >=1.25.4,<=2.6.3
     - wcwidth <0.3.0
   run:
     - python
     - colorama >=0.2.5,<0.4.7
     - docutils >=0.10,<0.20
-    - ruamel.yaml >=0.15.0,<=0.19.11
+    - ruamel.yaml >=0.15.0,<=0.19.1
     - ruamel.yaml.clib >=0.2.0,<=0.2.15
     - prompt-toolkit >=3.0.24,<3.0.52
     - distro >=1.5.0,<1.9.0
-    - awscrt >=0.36.2
+    - awscrt ==0.37.0
     - python-dateutil >=2.1,<=2.9.0
     - jmespath >=0.7.1,<1.1.0
-    - urllib3 >=1.25.4,<2.6.3
+    - urllib3 >=1.25.4,<=2.6.3
     - wcwidth <0.3.0
 
 test:
