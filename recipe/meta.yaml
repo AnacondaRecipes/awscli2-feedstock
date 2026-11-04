@@ -1,5 +1,5 @@
 {% set name = "awscli" %}
-{% set version = "2.37.5" %}
+{% set version = "2.38.5" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/aws/aws-cli/archive/{{ version }}.tar.gz
-  sha256: 832bbb3441a0b4e3cc36d00eb12ae842a77865367e9b06732f118be5bcf93955
+  sha256: 51c6e0fa12f8b1d8700fec03a862703c286a598d5c19b0b7481f3535c2473957
 
 build:
   number: 0
@@ -31,7 +31,7 @@ requirements:
     - ruamel.yaml.clib >=0.2.0,<=0.2.15
     - prompt-toolkit >=3.0.24,<3.0.52
     - distro >=1.5.0,<1.9.0
-    - awscrt ==0.37.0
+    - awscrt ==0.38.0
     - python-dateutil >=2.1,<=2.9.0
     - jmespath >=0.7.1,<1.1.0
     - urllib3 >=1.25.4,<=2.6.3
@@ -44,7 +44,7 @@ requirements:
     - ruamel.yaml.clib >=0.2.0,<=0.2.15
     - prompt-toolkit >=3.0.24,<3.0.52
     - distro >=1.5.0,<1.9.0
-    - awscrt ==0.37.0
+    - awscrt ==0.38.0
     - python-dateutil >=2.1,<=2.9.0
     - jmespath >=0.7.1,<1.1.0
     - urllib3 >=1.25.4,<=2.6.3
